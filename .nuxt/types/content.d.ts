@@ -1,0 +1,4 @@
+declare module '#content/server' {
+  const serverQueryContent: typeof import('/home/comborush/Projects/Personal/portfolio-v3/node_modules/.pnpm/@nuxt+content@2.13.2_ioredis@5.4.1_magicast@0.3.5_nuxt@3.13.2_@parcel+watcher@2.4.1_@types+no_j4f6sqjm7zkxlikaxc6q7pjqu4/node_modules/@nuxt/content/dist/runtime/legacy/types').serverQueryContent
+  const parseContent: typeof import('/home/comborush/Projects/Personal/portfolio-v3/node_modules/.pnpm/@nuxt+content@2.13.2_ioredis@5.4.1_magicast@0.3.5_nuxt@3.13.2_@parcel+watcher@2.4.1_@types+no_j4f6sqjm7zkxlikaxc6q7pjqu4/node_modules/@nuxt/content/dist/runtime/server').parseContent
+}
