@@ -1,12 +1,14 @@
 <template>
-  <NuxtRouteAnnouncer />
   <body class="bg-black w-screen min-h-screen text-white">
     <NuxtPage />
   </body>
+  <NuxtRouteAnnouncer />
 </template>
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;

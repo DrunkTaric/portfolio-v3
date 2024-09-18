@@ -5,7 +5,16 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@hypernym/nuxt-anime'],
+  tailwindcss: {
+    config: {
+      theme: {
+        fontFamily: {
+          caveat: ["Caveat"]
+        }
+      }
+    }
+  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@hypernym/nuxt-anime', '@vueuse/motion/nuxt'],
   anime: {
     provide: true,
     composables: true
