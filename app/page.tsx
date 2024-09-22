@@ -1,11 +1,12 @@
 "use client"
 
-import StickyCursor from "@/micro-components/stickyCursor";
 import Header from "@/components/home/header";
 import { useEffect, useState } from "react";
+import useCursor from "@/hooks/useCursor";
 
 export default function Home() {
 
+  const { RenderedComponent, resetToNormal, startAnimationBigBlend, startAnimationBigSticky } = useCursor()
   const [StartedWebsite, setStartedWebsite] = useState(false)
   
   useEffect(() => {
@@ -17,12 +18,16 @@ export default function Home() {
 
   return (
     <div className="w-full h-full">
-      <Header StartedWebsite={StartedWebsite} setStartedWebsite={setStartedWebsite}></Header>
+      <Header 
+        cursor={{blend: startAnimationBigBlend, sticky: startAnimationBigSticky, leave: resetToNormal}}
+        StartedWebsite={StartedWebsite} 
+        setStartedWebsite={setStartedWebsite}
+        ></Header>
       { StartedWebsite && <section className="w-full h-screen bg-blue-400 z-0">
       </section> }
       { StartedWebsite && <section className="w-full h-screen bg-red-400 z-0">
         </section> }
-      <StickyCursor></StickyCursor>
+      <RenderedComponent></RenderedComponent>
     </div>
   );
 }
