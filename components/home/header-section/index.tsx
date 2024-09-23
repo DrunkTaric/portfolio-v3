@@ -3,6 +3,7 @@ import { useAnimate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Caveat } from 'next/font/google'
 import clsx from "clsx";
+import { CursorExport } from "@/hooks/useCursor";
 
 const caveat = Caveat({
     subsets: ["cyrillic"],
@@ -10,7 +11,7 @@ const caveat = Caveat({
     display: "swap"
 })
   
-export default function Header({ setStartedWebsite, cursor }: { setStartedWebsite: (x: boolean) => void, cursor: { blend: (x?: number, y?: number) => void, sticky: (x: number, y: number, width: number, height: number, rounded?: boolean) => void, leave: () => void } }) {
+export default function Header({ setStartedWebsite, cursor }: { setStartedWebsite: (x: boolean) => void, cursor: Omit<CursorExport, "RenderedComponent"> }) {
   const buttonRef = useRef<HTMLButtonElement>()
   const [scope, animate] = useAnimate()
   const [DidScroll, setDidScroll] = useState(false)
@@ -57,14 +58,14 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
               </div>
           </div>
           <div className="absolute flex top-0 left-0 w-full">
-            <h1 id="header_1_animated" className="font-bold -ml-[70rem] text-[11rem] uppercase opacity-0" onMouseEnter={() => {cursor.blend(200, 200)}} onMouseLeave={cursor.leave}>Software</h1>
+            <h1 id="header_1_animated" className="font-bold -ml-[70rem] text-[11rem] uppercase opacity-0" onMouseEnter={() => {cursor.startAnimationBigBlend(200, 200)}} onMouseLeave={cursor.resetToNormal}>Software</h1>
             <div className="flex flex-col items-center justify-center w-full">
-              <h1 id="header_3_animated" className={clsx("text-8xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.blend(100, 100)}} onMouseLeave={cursor.leave}>7 years of experience</h1>
-              <h1 id="header_4_animated" className={clsx("text-6xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.blend(100, 100)}} onMouseLeave={cursor.leave}>Gold league player</h1>
+              <h1 id="header_3_animated" className={clsx("text-8xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.startAnimationBigBlend(100, 100)}} onMouseLeave={cursor.resetToNormal}>7 years of experience</h1>
+              <h1 id="header_4_animated" className={clsx("text-6xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.startAnimationBigBlend(100, 100)}} onMouseLeave={cursor.resetToNormal}>Gold league player</h1>
             </div>
           </div>
           <div id="header-center" className="flex flex-col space-y-7">
-            <h1 className="text-8xl font-bold select-none" onMouseEnter={() => {cursor.blend()}} onMouseLeave={cursor.leave}>DrunkTaric</h1>
+            <h1 className="text-8xl font-bold select-none" onMouseEnter={() => {cursor.startAnimationBigBlend()}} onMouseLeave={cursor.resetToNormal}>DrunkTaric</h1>
             <button 
               ref={buttonRef}
               className="ml-auto mr-auto text-center text-2xl p-2 pl-5 pr-5 hover:font-bold cursor-default" 
@@ -72,16 +73,16 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
               onMouseEnter={() => { 
                 const { width, height, top, left } = (buttonRef.current as HTMLButtonElement).getBoundingClientRect()
                 console.log(top, left)
-                cursor.sticky(left, top, width, height, true)
+                cursor.startAnimationBigSticky(left, top, width, height, true)
               }}
-              onMouseLeave={cursor.leave}
+              onMouseLeave={cursor.resetToNormal}
             >Click Me</button>
           </div>
           <div className="absolute flex bottom-0 right-0 w-full overflow-x-hidden">
             <div className="flex flex-col items-center justify-center w-full">
-              <h1 id="header_5_animated" className={clsx("text-7xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.blend(100, 100)}} onMouseLeave={cursor.leave}>this website made with ❤️</h1>
+              <h1 id="header_5_animated" className={clsx("text-7xl opacity-0 hidden", caveat.className)} onMouseEnter={() => {cursor.startAnimationBigBlend(100, 100)}} onMouseLeave={cursor.resetToNormal}>this website made with ❤️</h1>
             </div>
-            <h1 id="header_2_animated" className="font-bold text-[11rem] uppercase opacity-0 -mr-[70rem] select-none" onMouseEnter={() => {cursor.blend(200, 200)}} onMouseLeave={cursor.leave}>Engineer</h1>
+            <h1 id="header_2_animated" className="font-bold text-[11rem] uppercase opacity-0 -mr-[70rem] select-none" onMouseEnter={() => {cursor.startAnimationBigBlend(200, 200)}} onMouseLeave={cursor.resetToNormal}>Engineer</h1>
           </div>
       </header>
   ) 
