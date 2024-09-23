@@ -1,15 +1,15 @@
 "use client"
 
 import TechnologiesBar from "@/components/home/technologies-bar";
-import Header from "@/components/home/header";
+import Header from "@/components/home/header-section";
 import { useEffect, useState } from "react";
-import About from "@/components/home/about";
+import About from "@/components/home/about-section";
 import useCursor from "@/hooks/useCursor";
 
 export default function Home() {
 
-  const { RenderedComponent, resetToNormal, startAnimationBigBlend, startAnimationBigSticky } = useCursor()
   const [StartedWebsite, setStartedWebsite] = useState(true)
+  const { RenderedComponent, resetToNormal, startAnimationBigBlend, startAnimationBigSticky, changeColor } = useCursor()
   
   useEffect(() => {
     ( async () => {
@@ -22,11 +22,13 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <Header 
-        cursor={{blend: startAnimationBigBlend, sticky: startAnimationBigSticky, leave: resetToNormal}}
+        cursor={{resetToNormal, startAnimationBigBlend, startAnimationBigSticky, changeColor}}
         setStartedWebsite={setStartedWebsite}
         ></Header>
       { StartedWebsite && <TechnologiesBar></TechnologiesBar> }
-      { StartedWebsite && <About></About> }
+      { StartedWebsite && <About
+        cursor={{startAnimationBigBlend, startAnimationBigSticky, resetToNormal, changeColor}}
+      ></About>}
       <RenderedComponent></RenderedComponent>
     </div>
   );
