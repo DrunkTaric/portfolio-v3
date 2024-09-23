@@ -5,15 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1C1D20;
-    --foreground: #ededed;
-  }
+  /* --background: #1C1D20; */
+  --background: black;
+  --foreground: #ededed;
 }
 
 body {
