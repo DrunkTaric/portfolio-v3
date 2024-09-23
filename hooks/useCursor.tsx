@@ -1,7 +1,15 @@
 import { motion, useAnimate, useSpring, useMotionValue } from "framer-motion"
 import { useEffect, useState } from "react";
 
-export default function useCursor() {
+export interface CursorExport {
+    changeColor: (color: string) => void
+    resetToNormal: () => void
+    RenderedComponent: () => React.JSX.Element
+    startAnimationBigBlend: (width?: number, height?: number) => void
+    startAnimationBigSticky: (xPosition: number, yPosition: number, elementWidth: number, elementHeight: number, rounded?: boolean) => void
+}
+
+export default function useCursor(): CursorExport {
 
     const [scope, animate] = useAnimate()
     const [IsSticky, setIsSticky] = useState(false);
@@ -14,6 +22,7 @@ export default function useCursor() {
         padding: useMotionValue(0),
         paddingLeft: useMotionValue(0),
         paddingRight: useMotionValue(0),
+        background: useMotionValue("white"),
         borderRadius: useMotionValue("50%"),
         mixBlendMode: useMotionValue("normal"),
     }
@@ -33,6 +42,10 @@ export default function useCursor() {
         const { clientX, clientY } = e;
         mouse.x.set(clientX - options.size.x.get() / 2)
         mouse.y.set(clientY - options.size.y.get() / 2)
+    }
+
+    const changeColor = async (color: string) => {
+        options.background.set(color)
     }
 
     const resetToNormal = async () => {
@@ -88,7 +101,8 @@ export default function useCursor() {
                         paddingLeft: options.paddingLeft,
                         paddingRight: options.paddingRight,
                         mixBlendMode: options.mixBlendMode, 
-                        borderRadius: options.borderRadius
+                        borderRadius: options.borderRadius,
+                        background: options.background
                     }}>
                 </motion.div>
             </div>
@@ -96,6 +110,7 @@ export default function useCursor() {
     }
 
     return {
+        changeColor,
         resetToNormal,
         RenderedComponent,
         startAnimationBigBlend,
