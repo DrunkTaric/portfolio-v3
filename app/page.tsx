@@ -1,15 +1,22 @@
 "use client"
 
 import TechnologiesBar from "@/components/home/technologies-bar";
+import useTarnsitionRouter from "@/hooks/useTarnsitionRouter";
 import Header from "@/components/home/header-section";
-import { useEffect, useState } from "react";
 import About from "@/components/home/about-section";
+import { useEffect, useState } from "react";
 import useCursor from "@/hooks/useCursor";
 
 export default function Home() {
 
   const [StartedWebsite, setStartedWebsite] = useState(true)
-  const { RenderedComponent, resetToNormal, startAnimationBigBlend, startAnimationBigSticky, changeColor } = useCursor()
+  const { 
+    changeColor,
+    resetToNormal, 
+    RenderedComponent, 
+    startAnimationBigBlend, 
+    startAnimationBigSticky
+  } = useCursor()
   
   useEffect(() => {
     ( async () => {
