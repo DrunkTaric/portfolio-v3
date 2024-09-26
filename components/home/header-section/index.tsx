@@ -6,9 +6,9 @@ import clsx from "clsx";
 import { CursorExport } from "@/hooks/useCursor";
 
 const caveat = Caveat({
-    subsets: ["cyrillic"],
-    weight: "600",
-    display: "swap"
+  subsets: ["cyrillic"],
+  weight: "600",
+  display: "swap"
 })
   
 export default function Header({ setStartedWebsite, cursor }: { setStartedWebsite: (x: boolean) => void, cursor: Omit<CursorExport, "RenderedComponent"> }) {
