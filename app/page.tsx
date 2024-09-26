@@ -1,7 +1,6 @@
 "use client"
 
 import TechnologiesBar from "@/components/home/technologies-bar";
-import useTarnsitionRouter from "@/hooks/useTarnsitionRouter";
 import Header from "@/components/home/header-section";
 import About from "@/components/home/about-section";
 import { useEffect, useState } from "react";
