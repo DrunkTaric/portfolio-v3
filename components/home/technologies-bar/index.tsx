@@ -3,7 +3,7 @@ import "./style.css";
 
 export default function TechnologiesBar() {
     return (
-        <section className="flex flex-col w-full justify-center items-center p-10 space-y-12">
+        <section className="flex flex-col w-full justify-center bg-background items-center p-10 space-y-12">
             <div className="wrapper">
                 <Image width={70} height={70} alt="C#" src="/icons/languages/icons8-c.svg" className="item item1" />
                 <Image width={70} height={70} alt="Typescript" src="/icons/languages/icons8-typescript.svg" className="item item3" />
