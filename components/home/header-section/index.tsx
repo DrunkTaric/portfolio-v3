@@ -12,7 +12,7 @@ const caveat = Caveat({
 })
   
 export default function Header({ setStartedWebsite, cursor }: { setStartedWebsite: (x: boolean) => void, cursor: Omit<CursorExport, "RenderedComponent"> }) {
-  const buttonRef = useRef<HTMLButtonElement>()
+  const buttonRef = useRef<HTMLButtonElement | null>()
   const [scope, animate] = useAnimate()
   const [DidScroll, setDidScroll] = useState(false)
   const [ClickedHeaderButton, setClickedHeaderButton] = useState(false);
@@ -48,10 +48,10 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
           }
       }
       )()
-  }, [])
+  })
 
   return (
-      <header ref={scope} className="flex flex-col w-full h-screen justify-center items-center z-0">
+      <header ref={scope} className="flex flex-col w-full h-screen justify-center items-center bg-background">
           <div className="absolute flex bottom-0 w-full h-32">
               <div id="indicator" className="flex opacity-0 bg-white size-16 m-auto animate-bounce rounded-full">
                   {<FaArrowDown className="text-[var(--background)] text-4xl m-auto"></FaArrowDown>}
@@ -71,6 +71,7 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
               className="ml-auto mr-auto text-center text-2xl p-2 pl-5 pr-5 hover:font-bold cursor-default" 
               onClick={StartTheHeaderAnimations}
               onMouseEnter={() => { 
+                if (!buttonRef.current) return
                 const { width, height, top, left } = (buttonRef.current as HTMLButtonElement).getBoundingClientRect()
                 console.log(top, left)
                 cursor.startAnimationBigSticky(left, top, width, height, true)
