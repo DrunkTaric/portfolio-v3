@@ -5,7 +5,8 @@ import Globe from 'react-globe.gl';
 
 export default function EgyGlobe() {
 
-    const globeEl = useRef();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const globeEl = useRef<any | null>();
 
     const pointsData = [
         {
@@ -18,9 +19,11 @@ export default function EgyGlobe() {
 
     useEffect(() => {
         const globe = globeEl.current;
-        globe.controls().autoRotate = false; // Disable auto-rotation if you don't want it
-        globe.controls().enableZoom = false; // Enable zoom if you want it
-        globe.pointOfView({ lat: 26.0, lng: 30.0, altitude: 2 }, 0);
+        if (globe) {
+            globe.controls().autoRotate = false; // Disable auto-rotation if you don't want it
+            globe.controls().enableZoom = false; // Enable zoom if you want it
+            globe.pointOfView({ lat: 26.0, lng: 30.0, altitude: 2 }, 0);
+        }
         
     }, [])
 

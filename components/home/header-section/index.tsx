@@ -12,7 +12,8 @@ const caveat = Caveat({
 })
   
 export default function Header({ setStartedWebsite, cursor }: { setStartedWebsite: (x: boolean) => void, cursor: Omit<CursorExport, "RenderedComponent"> }) {
-  const buttonRef = useRef<HTMLButtonElement | null>()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const buttonRef = useRef<any | null>()
   const [scope, animate] = useAnimate()
   const [DidScroll, setDidScroll] = useState(false)
   const [ClickedHeaderButton, setClickedHeaderButton] = useState(false);

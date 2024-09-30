@@ -36,9 +36,7 @@ export default function Home() {
         setStartedWebsite={setStartedWebsite}
         ></Header>
       { StartedWebsite && <TechnologiesBar></TechnologiesBar> }
-      { StartedWebsite && <About
-        cursor={{startAnimationBigBlend, startAnimationBigSticky, resetToNormal, changeColor}}
-        ></About>}
+      { StartedWebsite && <About></About>}
       <Skills></Skills>
       <Projects></Projects>
       <section className="w-full h-screen">

@@ -1,4 +1,3 @@
-import { CursorExport } from "@/hooks/useCursor"
 import { Caveat } from "next/font/google"
 import Image from "next/image"
 import clsx from "clsx"
@@ -11,7 +10,7 @@ const caveat = Caveat({
     display: "swap"
 })
 
-export default function About({ cursor }: {cursor: Omit<CursorExport, "RenderedComponent"> }) {
+export default function About() {
     return (
         <section className="flex flex-col p-20 w-full h-screen bg-background space-y-10">
             <h1 className={"text-8xl font-bold"}>About</h1>
