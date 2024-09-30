@@ -11,7 +11,7 @@ import useCursor from "@/hooks/useCursor";
 
 export default function Home() {
 
-  const [StartedWebsite, setStartedWebsite] = useState(true)
+  const [StartedWebsite, setStartedWebsite] = useState(false)
   const { 
     changeColor,
     resetToNormal, 

@@ -20,7 +20,7 @@ export default function EgyGlobe() {
     useEffect(() => {
         const globe = globeEl.current;
         if (globe) {
-            globe.controls().autoRotate = false; // Disable auto-rotation if you don't want it
+            globe.controls().autoRotate = true; // Disable auto-rotation if you don't want it
             globe.controls().enableZoom = false; // Enable zoom if you want it
             globe.pointOfView({ lat: 26.0, lng: 30.0, altitude: 2 }, 0);
         }

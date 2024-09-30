@@ -18,11 +18,11 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
   const [DidScroll, setDidScroll] = useState(false)
   const [ClickedHeaderButton, setClickedHeaderButton] = useState(false);
   function StartTheHeaderAnimations() {
-      if (ClickedHeaderButton) return
-      setClickedHeaderButton(true)
-      const music = new Audio("/music.mp3")
-      const mouthClickSound = new Audio("/click.mp3")
-      mouthClickSound.play()
+    if (ClickedHeaderButton) return
+    setClickedHeaderButton(true)
+    const music = new Audio("/music.mp3")
+    const mouthClickSound = new Audio("/click.mp3")
+    mouthClickSound.play().then(() => {
       animate("#header_1_animated", {opacity: 1, marginLeft: 0}, {duration: 0.4})
       animate("#header_2_animated", {opacity: 1, marginRight: 0}, {duration: 0.4}).then(async () => {
         await animate("#header_3_animated", { display: "block"}, {duration: 0})
@@ -38,6 +38,7 @@ export default function Header({ setStartedWebsite, cursor }: { setStartedWebsit
       music.volume = 0.2
       music.loop = true
       music.play()
+    })
   }
 
   useEffect(() => {
