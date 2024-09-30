@@ -30,15 +30,15 @@ export default function Home() {
 
   return (
     <div className="w-full h-full">
-      <Footer></Footer>
+      { StartedWebsite && <Footer></Footer> }
       <Header 
         cursor={{resetToNormal, startAnimationBigBlend, startAnimationBigSticky, changeColor}}
         setStartedWebsite={setStartedWebsite}
         ></Header>
       { StartedWebsite && <TechnologiesBar></TechnologiesBar> }
-      { StartedWebsite && <About></About>}
-      <Skills></Skills>
-      <Projects></Projects>
+      { StartedWebsite && <About></About> }
+      { StartedWebsite && <Skills></Skills> }
+      { StartedWebsite && <Projects></Projects> }
       <section className="w-full h-screen">
       </section>
       <RenderedComponent></RenderedComponent>
