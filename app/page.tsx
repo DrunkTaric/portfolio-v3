@@ -1,7 +1,10 @@
 "use client"
 
 import TechnologiesBar from "@/components/home/technologies-bar";
+import Projects from "@/components/home/projects-section";
 import Header from "@/components/home/header-section";
+import Skills from "@/components/home/skills-section";
+import Footer from "@/components/home/footer-section";
 import About from "@/components/home/about-section";
 import { useEffect, useState } from "react";
 import useCursor from "@/hooks/useCursor";
@@ -27,6 +30,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-full">
+      <Footer></Footer>
       <Header 
         cursor={{resetToNormal, startAnimationBigBlend, startAnimationBigSticky, changeColor}}
         setStartedWebsite={setStartedWebsite}
@@ -34,7 +38,11 @@ export default function Home() {
       { StartedWebsite && <TechnologiesBar></TechnologiesBar> }
       { StartedWebsite && <About
         cursor={{startAnimationBigBlend, startAnimationBigSticky, resetToNormal, changeColor}}
-      ></About>}
+        ></About>}
+      <Skills></Skills>
+      <Projects></Projects>
+      <section className="w-full h-screen">
+      </section>
       <RenderedComponent></RenderedComponent>
     </div>
   );
